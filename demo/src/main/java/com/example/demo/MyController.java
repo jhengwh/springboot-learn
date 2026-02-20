@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MyController {
 
     @Autowired
-    @Qualifier("fujiPrinter")
+    @Qualifier("hpPrinter")
     private Printer printer;
 
     // Run when a request is received
