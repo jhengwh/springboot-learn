@@ -3,6 +3,9 @@ package com.example.demo;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 public class MyController {
 
@@ -15,8 +18,19 @@ public class MyController {
 
     // Run when a request is received
     @RequestMapping("/product")
-    public String product() {
+    public Shop product() {
+        Shop shop = new Shop();
+        List<String> goods = new ArrayList<>();
+
+        goods.add("Apple");
+        goods.add("Orange");
+        shop.setProductList(goods);
+
         System.out.println("product() is called!");
-        return "(1) Apple; (2) Orange.";
+
+        // Let the function return a Java object
+        // By annotating the class with `@RestController`, the returned Java object is automatically
+        // converted to JSON format before being sent back to the front end.
+        return shop;
     }
 }
