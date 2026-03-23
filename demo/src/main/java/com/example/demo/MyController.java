@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,12 +36,20 @@ public class MyController {
         return shop;
     }
 
-    @RequestMapping("/test1")
-    public String test1(@RequestParam Integer id) {
+    @RequestMapping("/testReqParam")
+    public String testReqParam(@RequestParam Integer id) {
         // Note: class `Integer` is a wrapper class which wraps the primitive `int`
         // value in a object and provides useful methods.
 
         System.out.println("id: " + id);
         return "Request Succeed.";
+    }
+
+    @RequestMapping("/testReqBody")
+    public String testReqBody(@RequestBody Student student) {
+
+        System.out.println("student id  : " + student.getId());
+        System.out.println("student name: " + student.getName());
+        return "Request Succeed (2).";
     }
 }
