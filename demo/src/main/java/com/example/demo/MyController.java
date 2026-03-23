@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -32,5 +33,14 @@ public class MyController {
         // By annotating the class with `@RestController`, the returned Java object is automatically
         // converted to JSON format before being sent back to the front end.
         return shop;
+    }
+
+    @RequestMapping("/test1")
+    public String test1(@RequestParam Integer id) {
+        // Note: class `Integer` is a wrapper class which wraps the primitive `int`
+        // value in a object and provides useful methods.
+
+        System.out.println("id: " + id);
+        return "Request Succeed.";
     }
 }
