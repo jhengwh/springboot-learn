@@ -1,6 +1,13 @@
 package com.example.demo;
 
 import org.springframework.web.bind.annotation.*;
+/* Includes ...
+ * import org.springframework.web.bind.annotation.RequestBody;
+ * import org.springframework.web.bind.annotation.RequestMapping;
+ * import org.springframework.web.bind.annotation.RequestParam;
+ * import org.springframework.web.bind.annotation.RestController;
+ * ..., etc.
+ */
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,5 +62,12 @@ public class MyController {
 
         System.out.println("Content Type: " + contentType);
         return "Request Succeed (3).";
+    }
+
+    @RequestMapping("/testPathVar/{id}")
+    public String testPathVar(@PathVariable Integer id) {
+
+        System.out.println("id: " + id);
+        return "Request Succeed (4).";
     }
 }
