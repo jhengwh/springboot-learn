@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -29,5 +30,19 @@ public class StudentController {
         namedParameterJdbcTemplate.update(sql, map);
 
         return "Executes INSERT SQL.";
+    }
+
+    @RequestMapping("/getStudents")
+    public List<Student> query(@RequestBody Integer queriedId) {
+        String sql = "SELECT id,name FROM student WHERE id = :qId";
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("qId", queriedId);
+
+        StudentRowMapper rowMapper = new StudentRowMapper();
+
+        List<Student> studList = namedParameterJdbcTemplate.query(sql, map, rowMapper);
+
+        return studList;
     }
 }
